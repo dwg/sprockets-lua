@@ -9,7 +9,7 @@ module Sprockets
     end
 
     def comment
-      @comment ||= line[/^\s*\/\/(.*)/, 1]
+      @comment ||= line[/^\s*--(.*)/, 1]
     end
 
     def comment?
@@ -21,19 +21,19 @@ module Sprockets
     end
 
     def begins_multiline_comment?
-      line =~ /^\s*\/\*(.*)/
+      line =~ /^\s*--\[\[(.*)/
     end
 
     def begins_pdoc_comment?
-      line =~ /^\s*\/\*\*(.*)/
+      line =~ /^\s*--\[\[\*(.*)/
     end
 
     def ends_multiline_comment?
-      line =~ /^(.*)\*\/\s*/
+      line =~ /^(.*)\]\]\s*/
     end
 
     def ends_pdoc_comment?
-      line =~ /^(.*)\*\*\/\s*/
+      line =~ /^(.*)\*\]\]\s*/
     end
 
     def require
